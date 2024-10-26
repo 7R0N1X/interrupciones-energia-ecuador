@@ -1,5 +1,5 @@
 import { consultarCortes } from './api/cnelep'
-import { $, validarCampos, limpiarResultados, crearSeccionResultados, crearSpinner } from './utils/domHelpers'
+import { $, validarCampos, limpiarResultados, crearSeccionResultados, crearSpinner, crearAlerta } from './utils/domHelpers'
 
 document.addEventListener('DOMContentLoaded', () => {
   const $identificacion = $('#identificacion')
@@ -19,7 +19,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (consulta) {
       limpiarResultados($resultados)
       if (consulta.status === 'ERROR') {
-        alert(consulta.mensaje);
+        const alerta = $('.alerta')
+        if (!alerta) {
+          $resultados.insertBefore(crearAlerta(consulta.mensaje), $resultados.firstChild)
+          setTimeout(() => {
+            $resultados.removeChild($resultados.firstChild)
+          }, 3000)
+        }
       } else if (consulta.status === 'OK') {
         const { notificaciones } = consulta
         $resultados.appendChild(crearSeccionResultados(notificaciones))
@@ -32,6 +38,17 @@ document.addEventListener('DOMContentLoaded', () => {
     e.preventDefault()
     identificacion = $identificacion.value
     empresaSeleccionada = $empresa.value
-    if (validarCampos(identificacion, empresaSeleccionada)) mostrarResultados()
+
+    if (validarCampos(identificacion, empresaSeleccionada)) {
+      mostrarResultados()
+    } else {      
+      const alerta = $('.alerta')
+      if (!alerta) {
+        $resultados.insertBefore(crearAlerta('Todos los campos son obligatorios.'), $resultados.firstChild)
+        setTimeout(() => {
+          $resultados.removeChild($resultados.firstChild)
+        }, 3000)
+      }
+    }
   })
 })

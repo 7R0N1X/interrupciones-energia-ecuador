@@ -1,3 +1,5 @@
+import triangleIcon from '/src/assets/triangle-alert.svg';
+
 export const $ = (elem) => document.querySelector(elem)
 
 const crearElemento = (tag, className, id) => {
@@ -21,12 +23,7 @@ export const crearSpinner = () => {
 
 export const validarCampos = (identificacion, empresa) => {
   if (empresa === '' || identificacion.length !== 10) {
-    alert('Todos los campos son requeridos.')
-    return
-  }
-  if (isNaN(identificacion)) {
-    alert('Ingrese un número de identificación válido.')
-    return
+    return false
   }
   return true
 }
@@ -79,4 +76,14 @@ export const crearSeccionResultados = (notificaciones) => {
     divResultados.append(strongCuentaContrato, strongCUEN, strongDireccion, h3, ul)
   })
   return divResultados
+}
+
+export const crearAlerta = (mensaje) => {
+  const divAlerta = crearElemento('DIV', 'alerta flex items-center gap-4 p-4 mt-8 border border-[#ED1C24] bg-[#C41017] rounded-md')
+  const triangleAlerta = crearElemento('IMG', 'triangle-alert')
+  triangleAlerta.setAttribute('src', triangleIcon)
+  const mensajeAlerta = crearElemento('P', 'text-gray-100 text-sm')
+  mensajeAlerta.textContent = mensaje
+  divAlerta.append(triangleAlerta, mensajeAlerta)
+  return divAlerta
 }
