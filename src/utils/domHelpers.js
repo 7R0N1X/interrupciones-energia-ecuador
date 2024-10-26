@@ -53,10 +53,10 @@ export const crearSeccionResultados = (notificaciones) => {
     strongCuentaContrato.appendChild(spanCuentaContrato)
 
     const strongCUEN = crearElemento('STRONG', 'text-gray-100 block')
-    strongCUEN.textContent = 'CUEN:'
-    const spanCUEN = crearElemento('SPAN', 'font-normal', 'cuen')
-    spanCUEN.textContent = ` ${cuen}`
-    strongCUEN.appendChild(spanCUEN)
+    strongCUEN.textContent = 'Código único:'
+    const spanCodigoUnico = crearElemento('SPAN', 'font-normal', 'cuen')
+    spanCodigoUnico.textContent = ` ${cuen}`
+    strongCUEN.appendChild(spanCodigoUnico)
 
     const strongDireccion = crearElemento('STRONG', 'text-gray-100 block')
     strongDireccion.textContent = 'Dirección:'
