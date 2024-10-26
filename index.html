@@ -14,13 +14,14 @@
   <main class="w-full">
     <div class="container w-full sm:my-5 mx-auto bg-gray-800 p-4 sm:p-[30px] sm:rounded-lg overflow-hidden relative">
       <h1 class="text-3xl font-bold text-center text-[#FCD116] my-[30px]">Interrupciones de Energía en Ecuador</h1>
-      <div class="bg-gray-700  text-gray-100 p-4 rounded-md mb-[30px]">
-        <h2 class="text-xl font-bold">Provincias disponibles para consulta:</h2>
-        <p class="mt-1">Bolívar, El Oro, Esmeraldas, Guayaquil, Guayas Los Ríos, Los Ríos, Manabí, Milagro, Santa Elena, Santo Domingo, Sucumbíos</p>
-      </div>
-      <form action="" class="flex">
-        <input type="number" name="identificacion" id="identificacion" placeholder="Ingrese número de indentificación" class="flex-1 p-3 bg-[#E8F0FE] border-none rounded-tl-[5px] rounded-bl-[5px] h-[42px]">
-        <button type="submit" id="consultar" class="flex justify-center items-center py-3 px-6 bg-[#D41920] hover:bg-[#c41017] transition-colors text-[#f0f0f0] border-none rounded-tr-[5px] rounded-br-[5px] h-[42px]">Consultar</button>
+      <form action="" class="flex flex-col sm:flex-row gap-2">
+        <select id="empresa" class="w-full p-3 bg-[#E8F0FE] border-none rounded-[5px] h-[42px]">
+          <option value="">Seleccione una empresa</option>
+          <option value="cnel ep">CNEL EP</option>
+          <option value="emel norte">EMEL NORTE</option>
+        </select>
+        <input type="number" name="identificacion" id="identificacion" placeholder="CI / RUC" class="p-3 bg-[#E8F0FE] border-none rounded-[5px] w-full h-[42px]">
+        <button type="submit" id="consultar" class="flex justify-center items-center py-3 px-6 bg-[#D41920] hover:bg-[#c41017] transition-colors text-[#f0f0f0] border-none rounded-[5px] h-[42px]">Consultar</button>
       </form>
     </div>
   </main>

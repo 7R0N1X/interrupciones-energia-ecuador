@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
   const $ = (elem) => document.querySelector(elem)
-  const $$ = (elem) => document.querySelectorAll(elem)
 
   const crearElemento = (tag, className, id) => {
     const el = document.createElement(tag)
@@ -12,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const $identificacion = $('#identificacion')
   const $btnConsultar = $('#consultar')
   const $container = $('.container')
+  const $empresa = $('#empresa')
 
   const mostrarResultados = (notificaciones) => {
 
@@ -58,28 +58,40 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   }
 
-  const validarIdentificacion = (identificacion) => {
-    if (identificacion.length !== 10 || isNaN(identificacion)) return false
+  const validarCampos = (identificacion, empresa) => {
+    if (empresa === '' || identificacion.length !== 10) {
+      alert('Todos los campos son requeridos.')
+      return
+    }
+    if (isNaN(identificacion)) {
+      alert('Ingrese un número de identificación válido.')
+      return
+    }
     return true
   }
 
-  const consultarCortes = (identificacion) => {
+  const consultarCortes = (identificacion, empresa) => {
     const urlBase = import.meta.env.VITE_URL_BASE
-    
-    const url = `${urlBase}${identificacion}/IDENTIFICACION`
-    fetch(url)
-      .then(res => res.json())
-      .then(data => {
-        if (data.resp === 'ERROR') alert(`${data.mensaje}`)
-        if (data.resp === 'OK') mostrarResultados(data.notificaciones)
-      })
-      .catch(err => console.log(err))
+
+    if (empresa === 'cnel ep') {
+      const url = `${urlBase}${identificacion}/IDENTIFICACION`
+      fetch(url)
+        .then(res => res.json())
+        .then(data => {
+          if (data.resp === 'ERROR') alert(`${data.mensaje}`)
+          if (data.resp === 'OK') mostrarResultados(data.notificaciones)
+        })
+        .catch(err => console.log(err))
+    } else if (empresa === 'emel norte') {
+      alert('Empresa no disponible por el momento.')
+    }
   }
 
   $btnConsultar.addEventListener('click', (e) => {
     e.preventDefault()
     const identificacion = $identificacion.value
-    if (validarIdentificacion(identificacion)) consultarCortes(identificacion)
+    const empresaSeleccionada = $empresa.value
+    if (validarCampos(identificacion, empresaSeleccionada)) consultarCortes(identificacion, empresaSeleccionada)
   })
 })
 

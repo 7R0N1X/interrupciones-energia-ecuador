@@ -6,7 +6,8 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-input:focus-visible {
+input:focus-visible,
+select:focus-visible {
   outline: none;
 }
 
