@@ -7,6 +7,18 @@ const crearElemento = (tag, className, id) => {
   return el
 }
 
+export const crearSpinner = () => {
+  const spinner = crearElemento("div", "sk-circle");
+
+  for (let i = 1; i <= 12; i++) {
+    const circle = crearElemento("div", `sk-circle${i} sk-child`);
+    spinner.appendChild(circle);
+  }
+
+  return spinner;
+}
+
+
 export const validarCampos = (identificacion, empresa) => {
   if (empresa === '' || identificacion.length !== 10) {
     alert('Todos los campos son requeridos.')

@@ -1,5 +1,5 @@
 import { consultarCortes } from './api/cnelep'
-import { $, validarCampos, limpiarResultados, crearSeccionResultados } from './utils/domHelpers'
+import { $, validarCampos, limpiarResultados, crearSeccionResultados, crearSpinner } from './utils/domHelpers'
 
 document.addEventListener('DOMContentLoaded', () => {
   const $identificacion = $('#identificacion')
@@ -12,10 +12,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const mostrarResultados = async () => {
     limpiarResultados($resultados)
-    const formulario = document.querySelector('form')
+    const formulario = $('form')
+    $resultados.appendChild(crearSpinner())
     const consulta = await consultarCortes(identificacion, empresaSeleccionada)
 
     if (consulta) {
+      limpiarResultados($resultados)
       if (consulta.status === 'ERROR') {
         alert(consulta.mensaje);
       } else if (consulta.status === 'OK') {
