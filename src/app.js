@@ -1,3 +1,5 @@
+import { consultarCortes } from './api/cnelep'
+
 document.addEventListener('DOMContentLoaded', () => {
   const $ = (elem) => document.querySelector(elem)
 
@@ -13,7 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const $container = $('.container')
   const $empresa = $('#empresa')
 
-  const mostrarResultados = (notificaciones) => {
+  const mostrarResultados = async () => {
+    const notificaciones = await consultarCortes($identificacion.value, $empresa.value)
 
     const divResultados = crearElemento('DIV', '', 'resultados')
     const h2 = crearElemento('H2', 'text-[#FCD116] text-2xl font-bold mt-8')
@@ -70,28 +73,10 @@ document.addEventListener('DOMContentLoaded', () => {
     return true
   }
 
-  const consultarCortes = (identificacion, empresa) => {
-    const urlBase = import.meta.env.VITE_URL_BASE
-
-    if (empresa === 'cnel ep') {
-      const url = `${urlBase}${identificacion}/IDENTIFICACION`
-      fetch(url)
-        .then(res => res.json())
-        .then(data => {
-          if (data.resp === 'ERROR') alert(`${data.mensaje}`)
-          if (data.resp === 'OK') mostrarResultados(data.notificaciones)
-        })
-        .catch(err => console.log(err))
-    } else if (empresa === 'emel norte') {
-      alert('Empresa no disponible por el momento.')
-    }
-  }
-
   $btnConsultar.addEventListener('click', (e) => {
     e.preventDefault()
     const identificacion = $identificacion.value
     const empresaSeleccionada = $empresa.value
-    if (validarCampos(identificacion, empresaSeleccionada)) consultarCortes(identificacion, empresaSeleccionada)
+    if (validarCampos(identificacion, empresaSeleccionada)) mostrarResultados()
   })
 })
-
