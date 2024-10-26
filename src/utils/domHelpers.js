@@ -39,9 +39,12 @@ export const crearSeccionResultados = (notificaciones) => {
   const h2 = crearElemento('H2', 'text-[#FCD116] text-2xl font-bold mt-8')
   h2.textContent = 'Resultados de la consulta'
   divResultados.append(h2)
+  const divPlanificaciones = crearElemento('DIV', 'flex max-sm:flex-col justify-between sm:gap-4 items-center')
 
   notificaciones.forEach(notificacion => {
     const { cuen, cuentaContrato, direccion, detallePlanificacion } = notificacion
+
+    const divDetallePlanificacion = crearElemento('DIV', 'w-full')
 
     const strongCuentaContrato = crearElemento('STRONG', 'text-gray-100 mt-8 block')
     strongCuentaContrato.textContent = 'Cuenta contrato:'
@@ -72,14 +75,16 @@ export const crearSeccionResultados = (notificaciones) => {
       li.textContent = `${fechaCorte}, de ${horaDesde} a ${horaHasta}`
       ul.appendChild(li)
     })
+    divDetallePlanificacion.append(strongCuentaContrato, strongCUEN, strongDireccion, h3, ul)
 
-    divResultados.append(strongCuentaContrato, strongCUEN, strongDireccion, h3, ul)
+    divPlanificaciones.append(divDetallePlanificacion)
   })
+  divResultados.appendChild(divPlanificaciones)
   return divResultados
 }
 
 export const crearAlerta = (mensaje) => {
-  const divAlerta = crearElemento('DIV', 'alerta flex items-center gap-4 p-4 mt-8 border border-[#ED1C24] bg-[#C41017] rounded-md')
+  const divAlerta = crearElemento('DIV', 'alerta flex items-center gap-4 p-4 mt-8 border border-[#ED1C24] bg-[#C41017] rounded-md max-w-[400px]')
   const triangleAlerta = crearElemento('IMG', 'triangle-alert')
   triangleAlerta.setAttribute('src', triangleIcon)
   const mensajeAlerta = crearElemento('P', 'text-gray-100 text-sm')
