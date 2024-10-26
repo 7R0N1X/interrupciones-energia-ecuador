@@ -8,11 +8,10 @@ export const consultarCortes = async (identificacion: string, empresa: string) =
       const data: APICnelEp = await res.json();
 
       if (data.resp === 'ERROR') {
-        alert(`${data.mensaje}`);
-        return undefined;
+        return { status: 'ERROR', mensaje: data.mensaje };
       }
       if (data.resp === 'OK') {
-        return data.notificaciones
+        return { status: 'OK', notificaciones: data.notificaciones };
       }
     } catch (err) {
       console.error(err);
