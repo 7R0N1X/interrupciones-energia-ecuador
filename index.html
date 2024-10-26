@@ -10,8 +10,8 @@
   <meta name="description" content="Consulta los horarios y sectores de interrupciones programadas de energía en Ecuador. Encuentra detalles específicos por unidades de negocio de CNEL EP en provincias como Guayaquil, Manabí, El Oro, y más.">
 </head>
 
-<body class="max-w-screen-md mx-auto bg-gray-900">
-  <main class="w-full">
+<body class="bg-gray-900 w-full h-screen flex flex-col items-center">
+  <main class="max-w-screen-md mx-auto flex-1">
     <div class="container w-full sm:my-5 mx-auto bg-gray-800 p-4 sm:p-[30px] sm:rounded-lg overflow-hidden relative">
       <h1 class="text-3xl font-bold text-center text-[#FCD116] my-[30px]">Interrupciones de Energía en Ecuador</h1>
       <form action="" class="flex flex-col sm:flex-row gap-2">
@@ -26,6 +26,10 @@
       <div id="resultados"></div>
     </div>
   </main>
+  <footer class="text-gray-100 flex flex-col sm:flex-row items-center justify-center gap-2 w-full bg-gray-800 p-4 sm:py-6 text-sm">
+    <p class="text-center">Este proyecto no está afiliado oficialmente a ninguna entidad gubernamental.</p>
+    <a href="https://github.com/7R0N1X/interrupciones-energia-ecuador" target="_blank" rel="noopener noreferrer"><img src="/public/github-fill.svg" alt="Icono de github"></a>
+  </footer>
   <script type="module" src="./src/app.js"></script>
 </body>
 
