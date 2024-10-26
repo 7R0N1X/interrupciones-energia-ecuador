@@ -28,7 +28,7 @@ export const limpiarResultados = (elem) => {
 export const crearSeccionResultados = (notificaciones) => {
   const divResultados = crearElemento('DIV', '', 'resultados')
   const h2 = crearElemento('H2', 'text-[#FCD116] text-2xl font-bold mt-8')
-  h2.textContent = 'Resultados de la búsqueda'
+  h2.textContent = 'Resultados de la consulta'
   divResultados.append(h2)
 
   notificaciones.forEach(notificacion => {
@@ -59,7 +59,7 @@ export const crearSeccionResultados = (notificaciones) => {
     detallePlanificacion.forEach(evento => {
       const { fechaCorte, horaDesde, horaHasta } = evento
 
-      const li = crearElemento('LI', 'bg-gray-700  text-gray-100 mb-3 sm:mb-2 p-4 rounded-md border-l-4 border-l-[#FCD116] hover:translate-x-1 transition-transform')
+      const li = crearElemento('LI', 'bg-[#232323] border border-[#ffeaa5]/20  text-gray-100 mb-3 sm:mb-2 p-4 rounded-md border-l-4 border-l-[#FCD116] hover:translate-x-1 transition-transform')
       li.textContent = `${fechaCorte}, de ${horaDesde} a ${horaHasta}`
       ul.appendChild(li)
     })
