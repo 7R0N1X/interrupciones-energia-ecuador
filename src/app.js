@@ -5,12 +5,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const $identificacion = $('#identificacion')
   const $btnConsultar = $('#consultar')
   const $resultados = $('#resultados')
+  const $body = $('body')
   const $empresa = $('#empresa')
   const $tipoConsulta = $('#tipo-consulta')
 
   let identificacion
   let empresaSeleccionada
   let tipoConsulta
+  let existeAlerta
 
   const mostrarResultados = async () => {
     limpiarResultados($resultados)
@@ -21,11 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (consulta) {
       limpiarResultados($resultados)
       if (consulta.status === 'ERROR') {
-        const alerta = $('.alerta')
-        if (!alerta) {
-          $resultados.insertBefore(crearAlerta(consulta.mensaje), $resultados.firstChild)
+        if (!existeAlerta) {
+          $body.appendChild(crearAlerta(consulta.mensaje))
           setTimeout(() => {
-            $resultados.removeChild($resultados.firstChild)
+            $body.querySelector('.alerta').remove()
           }, 3000)
         }
       } else if (consulta.status === 'OK') {
@@ -41,15 +42,15 @@ document.addEventListener('DOMContentLoaded', () => {
     identificacion = $identificacion.value
     tipoConsulta = $tipoConsulta.value
     empresaSeleccionada = $empresa.value
+    existeAlerta = $('.alerta')
 
     if (validarCampos(identificacion, empresaSeleccionada, tipoConsulta)) {
       mostrarResultados()
-    } else {      
-      const alerta = $('.alerta')
-      if (!alerta) {
-        $resultados.insertBefore(crearAlerta('Todos los campos son obligatorios.'), $resultados.firstChild)
+    } else {
+      if (!existeAlerta) {
+        $body.appendChild(crearAlerta('Todos los campos son obligatorios.'))
         setTimeout(() => {
-          $resultados.removeChild($resultados.firstChild)
+          $body.querySelector('.alerta').remove()
         }, 3000)
       }
     }
