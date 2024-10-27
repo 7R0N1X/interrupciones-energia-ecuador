@@ -1,15 +1,16 @@
+import { Notificacione } from '../types/cnelep';
 import triangleIcon from '/src/assets/triangle-alert.svg';
 
-export const $ = (elem) => document.querySelector(elem)
+export const $ = (elem: string): HTMLElement | null => document.querySelector(elem)
 
-const crearElemento = (tag, className, id) => {
+const crearElemento = (tag: string, className: string, id?: string): HTMLElement => {
   const el = document.createElement(tag)
   if (id) el.id = id
   if (className) el.className = className
   return el
 }
 
-export const crearSpinner = () => {
+export const crearSpinner = (): HTMLElement => {
   const spinner = crearElemento("div", "sk-circle");
 
   for (let i = 1; i <= 12; i++) {
@@ -20,21 +21,20 @@ export const crearSpinner = () => {
   return spinner;
 }
 
-
-export const validarCampos = (identificacion, empresa, tipoConsulta) => {
-  if (empresa === '' || tipoConsulta === '' || identificacion.value === '') {
+export const validarCampos = (identificacion: String, empresa: string, tipoConsulta: string): Boolean => {
+  if (empresa === '' || tipoConsulta === '' || identificacion === '') {
     return false
   }
   return true
 }
 
-export const limpiarResultados = (elem) => {
+export const limpiarResultados = (elem: HTMLElement): any => {
   while (elem.firstChild) {
     elem.removeChild(elem.firstChild)
   }
 }
 
-export const crearSeccionResultados = (notificaciones) => {
+export const crearSeccionResultados = (notificaciones: Notificacione[]): HTMLElement => {
   const divResultados = crearElemento('DIV', '', 'resultados')
   const h2 = crearElemento('H2', 'text-[#FCD116] text-2xl font-bold mt-8')
   h2.textContent = 'Resultados de la consulta'
@@ -83,7 +83,7 @@ export const crearSeccionResultados = (notificaciones) => {
   return divResultados
 }
 
-export const crearAlerta = (mensaje) => {
+export const crearAlerta = (mensaje: string): HTMLElement => {
   const divAlerta = crearElemento('DIV', 'alerta flex items-center gap-4 p-4 mt-8 border border-[#ED1C24] bg-[#C41017] rounded-md max-w-[400px]')
   const triangleAlerta = crearElemento('IMG', 'triangle-alert')
   triangleAlerta.setAttribute('src', triangleIcon)
