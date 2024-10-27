@@ -21,8 +21,8 @@ export const crearSpinner = () => {
 }
 
 
-export const validarCampos = (identificacion, empresa) => {
-  if (empresa === '' || identificacion.length !== 10) {
+export const validarCampos = (identificacion, empresa, tipoConsulta) => {
+  if (empresa === '' || tipoConsulta === '' || identificacion.value === '') {
     return false
   }
   return true

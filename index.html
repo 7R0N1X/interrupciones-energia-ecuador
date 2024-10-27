@@ -20,10 +20,16 @@
       <form action="" class="flex flex-col sm:flex-row gap-3 sm:gap-2">
         <select id="empresa" class="w-full p-3 bg-[#E8F0FE] border-none rounded-[5px] h-[42px]">
           <option value="">Seleccione una empresa</option>
-          <option value="cnel ep">CNEL EP</option>
-          <option value="emel norte">EMEL NORTE</option>
+          <option value="cnel-ep">CNEL EP</option>
+          <option value="emel-norte" disabled>EMEL NORTE</option>
         </select>
-        <input type="number" name="identificacion" id="identificacion" placeholder="CI / RUC" class="p-3 bg-[#E8F0FE] border-none rounded-[5px] w-full h-[42px]">
+        <select id="tipo-consulta" class="w-full p-3 bg-[#E8F0FE] border-none rounded-[5px] h-[42px]">
+          <option value="">Seleccione tipo de consulta</option>
+          <option value="codigo-unico">Código único</option>
+          <option value="cuenta-contrato">Cuenta contrato</option>
+          <option value="numero-de-identificaion">Número de identificacion</option>
+        </select>
+        <input type="number" name="identificacion" id="identificacion" placeholder="C.U. / Cta. / CI" class="p-3 bg-[#E8F0FE] border-none rounded-[5px] w-full h-[42px]">
         <button type="submit" id="consultar" class="flex justify-center items-center py-3 px-6 bg-[#D41920] hover:bg-[#c41017] transition-colors text-[#f0f0f0] border-none rounded-[5px] h-[42px]">Consultar</button>
       </form>
       <div id="resultados"></div>

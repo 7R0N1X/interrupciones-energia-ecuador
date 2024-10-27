@@ -1,4 +1,4 @@
-import { consultarCortes } from './api/cnelep'
+import { consultarCortesCnelEp } from './api/cnelep'
 import { $, validarCampos, limpiarResultados, crearSeccionResultados, crearSpinner, crearAlerta } from './utils/domHelpers'
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -6,15 +6,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const $btnConsultar = $('#consultar')
   const $resultados = $('#resultados')
   const $empresa = $('#empresa')
+  const $tipoConsulta = $('#tipo-consulta')
 
   let identificacion
   let empresaSeleccionada
+  let tipoConsulta
 
   const mostrarResultados = async () => {
     limpiarResultados($resultados)
     const formulario = $('form')
     $resultados.appendChild(crearSpinner())
-    const consulta = await consultarCortes(identificacion, empresaSeleccionada)
+    const consulta = await consultarCortesCnelEp(identificacion, empresaSeleccionada, tipoConsulta)
 
     if (consulta) {
       limpiarResultados($resultados)
@@ -37,9 +39,10 @@ document.addEventListener('DOMContentLoaded', () => {
   $btnConsultar.addEventListener('click', (e) => {
     e.preventDefault()
     identificacion = $identificacion.value
+    tipoConsulta = $tipoConsulta.value
     empresaSeleccionada = $empresa.value
 
-    if (validarCampos(identificacion, empresaSeleccionada)) {
+    if (validarCampos(identificacion, empresaSeleccionada, tipoConsulta)) {
       mostrarResultados()
     } else {      
       const alerta = $('.alerta')
