@@ -1,7 +1,7 @@
 import { APICnelEp } from '../types/cnelep';
 
 export const consultarCortesCnelEp = async (identificacion: string, empresa: string, tipoConsulta: string) => {
-  
+
   if (empresa === 'cnel-ep') {
     switch (tipoConsulta) {
       case 'codigo-unico':
@@ -58,3 +58,14 @@ export const consultarCortesCnelEp = async (identificacion: string, empresa: str
     alert('Empresa no disponible por el momento.');
   }
 };
+
+export const consultarSectoresAfectadosCnelEp = async (alimentador: string) => {
+  const url = `https://api.cnelep.gob.ec/servicios-linea/v1/notificaciones/sector/${alimentador}`
+  try {
+    const res = await fetch(url);
+    const data = await res.text()
+    return data
+  } catch (err) {
+    console.error(err)
+  }
+}
