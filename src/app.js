@@ -1,7 +1,9 @@
+import { inject } from "@vercel/analytics"
 import { consultarCortesCnelEp } from './api/cnelep'
 import { $, validarCampos, limpiarResultados, crearSeccionResultados, crearSpinner, crearAlerta } from './utils/domHelpers'
 
 document.addEventListener('DOMContentLoaded', () => {
+  inject()
   const $identificacion = $('#identificacion')
   const $btnConsultar = $('#consultar')
   const $resultados = $('#resultados')
