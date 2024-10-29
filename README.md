@@ -1,6 +1,5 @@
 # Interrupciones de Energía en Ecuador
-![Screenshot](https://github.com/user-attachments/assets/3307af29-8b1d-4519-98dd-1cb9fb762f68)
-
+![Screenshot](https://github.com/user-attachments/assets/a9dacc71-154b-4339-b719-011eabbbe18c)
 
 ## Descripción
 
