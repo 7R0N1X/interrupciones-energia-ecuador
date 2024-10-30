@@ -1,21 +1,21 @@
 # Interrupciones de Energía en Ecuador
-![Screenshot](https://github.com/user-attachments/assets/a9dacc71-154b-4339-b719-011eabbbe18c)
+![Screenshot](https://github.com/user-attachments/assets/5b1b103c-4246-4397-81e8-cc2735e943a4)
 
 ## Descripción
 
-Este proyecto te permite consultar el horario de corte del servicio eléctrico en Ecuador a través del código de contrato o el número de cédula de los ciudadanos que cuenten con un contrato del servicio eléctrico para la empresa CNEL EP y Emel Norte.
+Este proyecto te permite consultar el horario de corte del servicio eléctrico en Ecuador para los ciudadanos que cuenten con un contrato del servicio eléctrico para la empresa CNEL EP y Emel Norte.
 
 ## Funcionalidades
 
-- Consultar horarios de corte por código de contrato o número de cédula
+- Consultar horarios de corte por código único, código de contrato o número de cédula.
 
 ## Tecnologías Utilizadas
 
-- **HTML**: Estructura de la aplicación
-- **CSS y Tailwind CSS**: Estilo y diseño
-- **JavaScript (Vanilla)**: Funcionalidad e interactividad
-- **Node.js**: Entorno de ejecución utilizado para gestionar dependencias
-- **TypeScript**: Tipos y estructura para la API
+- **HTML**: Estructura de la aplicación.
+- **CSS y Tailwind CSS**: Estilo y diseño.
+- **JavaScript (Vanilla)**: Funcionalidad e interactividad.
+- **Node.js**: Entorno de ejecución utilizado para gestionar dependencias.
+- **TypeScript**: Tipos y estructura para la API.
 
 ## Instalación
 
