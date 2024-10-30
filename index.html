@@ -19,7 +19,7 @@
     </nav>
   </header>
   <main class="w-full max-w-[1000px] mx-auto">
-    <div class="container w-full sm:mb-5 mx-auto bg-neutral-900 p-4 sm:p-[30px] sm:rounded-lg overflow-hidden relative">
+    <section class="container w-full sm:mb-5 mx-auto bg-neutral-900 p-4 sm:p-[30px] sm:rounded-lg overflow-hidden relative">
       <h1 class="text-3xl font-bold text-center text-[#FCD116] my-[30px]">Interrupciones de Energía en Ecuador</h1>
       <form action="" class="flex flex-col sm:flex-row gap-3 sm:gap-2">
         <select id="empresa" class="w-full p-3 bg-[#E8F0FE] border-none rounded-[5px] h-[42px]">
@@ -33,11 +33,11 @@
           <option value="cuenta-contrato">Cuenta contrato</option>
           <option value="numero-de-identificaion">Número de identificacion</option>
         </select>
-        <input type="number" name="identificacion" id="identificacion" placeholder="C.U. / Cta. / CI" class="p-3 bg-[#E8F0FE] border-none rounded-[5px] w-full h-[42px]">
+        <input type="number" name="identificacion" id="identificacion" placeholder="CU / CTA / CI" class="p-3 bg-[#E8F0FE] border-none rounded-[5px] w-full h-[42px]">
         <button type="submit" id="consultar" class="flex justify-center items-center py-3 px-6 bg-[#D41920] hover:bg-[#c41017] transition-colors text-[#f0f0f0] border-none rounded-[5px] h-[42px]">Consultar</button>
       </form>
-      <div id="resultados"></div>
-    </div>
+      <section id="resultados"></section>
+    </section>
   </main>
   <script type="module" src="./src/app.js"></script>
 </body>
