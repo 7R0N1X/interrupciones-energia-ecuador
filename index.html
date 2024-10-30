@@ -11,11 +11,14 @@
   <meta name="description" content="Consulta los horarios y sectores de interrupciones programadas de energía en Ecuador. Encuentra detalles específicos por unidades de negocio de CNEL EP en provincias como Guayaquil, Manabí, El Oro, y más.">
 </head>
 
-<body class="bg-neutral-950 w-full h-screen">
+<body class="bg-neutral-950 w-full h-full">
+  <header class="max-lg:hidden max-w-[1000px] mx-auto py-2">
+    <nav class="flex items-center gap-2 justify-end">
+      <a href="#" class="inline-flex items-center gap-2 py-2 px-4 bg-neutral-950 hover:bg-neutral-900 transition-colors ring-[1px] ring-gray-100/20 rounded-md text-white text-sm font-medium"><img src="/src/assets/users.svg" alt="Icono de colaboradores" class="size-4">Colaboradores</a>
+      <a href="https://github.com/7R0N1X/interrupciones-energia-ecuador" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 py-2 px-4 bg-neutral-900 hover:bg-neutral-800 transition-colors ring-[1px] ring-neutral-900/20 rounded-md text-white text-sm font-medium"><img src="/src/assets/github-fill.svg" alt="Icono de github" class="size-4">Github</a>
+    </nav>
+  </header>
   <main class="w-full max-w-[1000px] mx-auto">
-    <header class="w-full flex justify-end py-2 max-sm:hidden">
-      <a href="https://github.com/7R0N1X/interrupciones-energia-ecuador" target="_blank" rel="noopener noreferrer" class="hover:bg-neutral-900 transition-colors p-2 rounded-lg"><img src="/src/assets/github-fill.svg" alt=""></a>
-    </header>
     <div class="container w-full sm:mb-5 mx-auto bg-neutral-900 p-4 sm:p-[30px] sm:rounded-lg overflow-hidden relative">
       <h1 class="text-3xl font-bold text-center text-[#FCD116] my-[30px]">Interrupciones de Energía en Ecuador</h1>
       <form action="" class="flex flex-col sm:flex-row gap-3 sm:gap-2">
