@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="HGC4PYVYeMLg6AWUbZTSUNkQDjcwZJNAnA9-G0xKNac" />
+  <link rel="shortcut icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./src/styles/main.css">
+  <title>Interrupciones de Energía en Ecuador | Consulta Programación de CNEL EP</title>
+  <meta name="description" content="Consulta los horarios y sectores de interrupciones programadas de energía en Ecuador. Encuentra detalles específicos por unidades de negocio de CNEL EP en provincias como Guayaquil, Manabí, El Oro, y más.">
+</head>
+
+<body class="bg-neutral-950 w-full h-full">
+  <header class="max-lg:hidden max-w-[1000px] mx-auto py-2">
+    <nav class="flex items-center gap-2 justify-end">
+      <a href="/index.html" class="inline-flex items-center gap-2 py-2 px-4 bg-neutral-950 hover:bg-neutral-900 transition-colors ring-[1px] ring-gray-100/20 rounded-md text-white text-sm font-medium"><img src="/src/assets/calendar-clock.svg" alt="Icono de colaboradores" class="size-4">Consultar cortes</a>
+      <a href="https://github.com/7R0N1X/interrupciones-energia-ecuador" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 py-2 px-4 bg-neutral-900 hover:bg-neutral-800 transition-colors ring-[1px] ring-neutral-900/20 rounded-md text-white text-sm font-medium"><img src="/src/assets/github-fill.svg" alt="Icono de github" class="size-4">Github</a>
+    </nav>
+  </header>
+  <main class="w-full max-w-[1000px] mx-auto">
+    <section class="container w-full sm:mb-5 mx-auto bg-neutral-900 p-4 sm:p-[30px] sm:rounded-lg overflow-hidden relative">
+      <h1 class="text-3xl font-bold text-center text-[#FCD116] my-[30px]">Colaboradores</h1>
+      <div id="contribuciones" class="w-full flex flex-wrap gap-4"></div>
+    </section>
+  </main>
+  <script type="module" src="./src/colaboradores.ts"></script>
+</body>
+
+</html>
+

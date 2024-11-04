@@ -135,3 +135,27 @@ export const crearAlerta = (mensaje: string): HTMLElement => {
   divAlerta.append(triangleAlerta, mensajeAlerta)
   return divAlerta
 }
+
+export const crearCardContribuyentes = (avatar_url: string, html_url: string, login: string, contributions: number): HTMLElement => {
+  const article = crearElemento('ARTICLE', 'bg-[#242424] w-full sm:w-[346px] lg:w-[302px] rounded-lg overflow-hidden p-4 bg-[#242424] border-[#333333] hover:bg-[#2A2A2A] transition-colors duration-150')
+  const div = crearElemento('DIV', 'flex gap-4 mb-4')
+  const img = crearElemento('IMG', 'size-12 rounded-full')
+  img.setAttribute('src', `${avatar_url}`)
+  img.setAttribute('alt', `Avatar del perfil de ${login}`)
+  const divInfo = crearElemento('DIV', '')
+  const usuario = crearElemento('P', 'text-lg font-semibold text-gray-100')
+  usuario.textContent = login
+  const numeroContribuciones = crearElemento('P', 'text-sm text-[#999999]')
+  numeroContribuciones.textContent = `${contributions} contribuciones`
+  const verPerfil = crearElemento('A', 'h-9 flex justify-center items-center gap-2 text-sm font-semibold border border-[#FFD700] text-[#FFD700] hover:bg-[#FFD700] hover:text-[#1A1A1A] transition-colors rounded-md px-3')
+  verPerfil.setAttribute('href', `${html_url}`)
+  verPerfil.setAttribute('target', '_blank')
+  verPerfil.setAttribute('rel', 'noopener noreferrer')
+  verPerfil.innerHTML = `Ver Perfil <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link w-4 h-4 ml-2" data-id="18"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>`
+
+  divInfo.append(usuario, numeroContribuciones)
+  div.append(img, divInfo)
+  article.append(div, verPerfil)
+
+  return article
+}
