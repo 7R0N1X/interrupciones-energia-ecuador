@@ -1,107 +1,75 @@
 import { inject } from "@vercel/analytics";
 import { consultarCortesCnelEp } from "./api/cnelep";
-import {
-  $,
-  validarCampos,
-  limpiarResultados,
-  crearSeccionResultados,
-  crearSpinner,
-  crearAlerta,
-} from "./utils/domHelpers";
+import $ from "./utils/seleccionarElemento";
+import verificarLocalStorage from "./utils/verificarLocalStorage";
+import validarCampos from "./utils/validarCampos"
+import limpiarResultados from "./utils/limpiarResultados"
+import spinner from "./components/spinner"
+import alerta from "./components/alerta"
+import resultado from "./components/resultados"
+import mostrarModal from "./utils/mostrarModal";
 
 document.addEventListener("DOMContentLoaded", () => {
   inject();
+
+  const $empresa = $("#empresa");
+  const $tipoConsulta = $("#tipo-consulta");
   const $identificacion = $("#identificacion");
   const $btnConsultar = $("#consultar");
   const $resultados = $("#resultados");
   const $body = $("body");
-  const $empresa = $("#empresa");
-  const $tipoConsulta = $("#tipo-consulta");
 
-  let identificacion;
   let empresaSeleccionada;
   let tipoConsulta;
+  let identificacion;
   let existeAlerta;
+
+  const { empresaSeleccionada: _empresaSeleccionada, tipoConsulta: _tipoConsulta, identificacion: _identificacion } = verificarLocalStorage()
+  empresaSeleccionada = _empresaSeleccionada
+  tipoConsulta = _tipoConsulta
+  identificacion = _identificacion
 
   const mostrarResultados = async () => {
     limpiarResultados($resultados);
-    const formulario = $("form");
-    $resultados.appendChild(crearSpinner());
-    const consulta = await consultarCortesCnelEp(
-      identificacion,
-      empresaSeleccionada,
-      tipoConsulta
-    );
+    $resultados.appendChild(spinner());
+    const consulta = await consultarCortesCnelEp(identificacion, empresaSeleccionada, tipoConsulta);
 
     if (consulta) {
-
-
       limpiarResultados($resultados);
-
-
-
       if (consulta.status === "ERROR") {
-
-        verificarLocalStorageYConsultar();
-
         if (!existeAlerta) {
-          $body.appendChild(crearAlerta(consulta.mensaje));
+          $body.appendChild(alerta(consulta.mensaje));
           setTimeout(() => {
             $body.querySelector(".alerta").remove();
           }, 3000);
         }
       } else if (consulta.status === "OK") {
+        localStorage.setItem("empresaSeleccionada", JSON.stringify(empresaSeleccionada));
         localStorage.setItem("tipoConsulta", JSON.stringify(tipoConsulta));
-        localStorage.setItem(
-          "empresaSeleccionada",
-          JSON.stringify(empresaSeleccionada)
-        );
         localStorage.setItem("identificacion", JSON.stringify(identificacion));
 
         const { notificaciones } = consulta;
-        $resultados.appendChild(crearSeccionResultados(notificaciones));
+        $resultados.appendChild(resultado(notificaciones, mostrarModal));
       }
     }
+    const formulario = $("form");
     formulario.reset();
   };
 
-  // Función para verificar localStorage y llamar automáticamente a mostrarResultados si existen datos
-  const verificarLocalStorageYConsultar = () => {
-    const tipoConsultaStored = localStorage.getItem("tipoConsulta");
-    const empresaSeleccionadaStored = localStorage.getItem(
-      "empresaSeleccionada"
-    );
-    const identificacionStored = localStorage.getItem("identificacion");
+  mostrarResultados();
 
-    // Si los datos existen en localStorage, los asignamos a las variables y mostramos resultados
-    if (
-      tipoConsultaStored &&
-      empresaSeleccionadaStored &&
-      identificacionStored
-    ) {
-      tipoConsulta = JSON.parse(tipoConsultaStored);
-      empresaSeleccionada = JSON.parse(empresaSeleccionadaStored);
-      identificacion = JSON.parse(identificacionStored);
-      mostrarResultados();
-    }
-  };
-
-  // Verificar localStorage al cargar la página
-  verificarLocalStorageYConsultar();
-
-  // Evento para el botón de consulta
   $btnConsultar.addEventListener("click", (e) => {
     e.preventDefault();
-    identificacion = $identificacion.value;
-    tipoConsulta = $tipoConsulta.value;
     empresaSeleccionada = $empresa.value;
+    tipoConsulta = $tipoConsulta.value;
+    identificacion = $identificacion.value;
     existeAlerta = $(".alerta");
 
     if (validarCampos(identificacion, empresaSeleccionada, tipoConsulta)) {
       mostrarResultados();
     } else {
       if (!existeAlerta) {
-        $body.appendChild(crearAlerta("Todos los campos son obligatorios."));
+        $body.appendChild(alerta("Todos los campos son obligatorios."));
         setTimeout(() => {
           $body.querySelector(".alerta").remove();
         }, 3000);

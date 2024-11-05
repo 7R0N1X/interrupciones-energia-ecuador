@@ -1,12 +1,6 @@
 import { APICnelEp } from '../types/cnelep';
 
 export const consultarCortesCnelEp = async (identificacion: string, empresa: string, tipoConsulta: string) => {
-
-
-
-
-
-  
   if (empresa === 'cnel-ep') {
     switch (tipoConsulta) {
       case 'codigo-unico':

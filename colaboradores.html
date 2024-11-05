@@ -14,7 +14,7 @@
 <body class="bg-neutral-950 w-full h-full">
   <header class="max-lg:hidden max-w-[1000px] mx-auto py-2">
     <nav class="flex items-center gap-2 justify-end">
-      <a href="/index.html" class="inline-flex items-center gap-2 py-2 px-4 bg-neutral-950 hover:bg-neutral-900 transition-colors ring-[1px] ring-gray-100/20 rounded-md text-white text-sm font-medium"><img src="/src/assets/calendar-clock.svg" alt="Icono de colaboradores" class="size-4">Consultar cortes</a>
+      <a href="/" class="inline-flex items-center gap-2 py-2 px-4 bg-neutral-950 hover:bg-neutral-900 transition-colors ring-[1px] ring-gray-100/20 rounded-md text-white text-sm font-medium"><img src="/src/assets/calendar-clock.svg" alt="Icono de colaboradores" class="size-4">Consultar cortes</a>
       <a href="https://github.com/7R0N1X/interrupciones-energia-ecuador" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 py-2 px-4 bg-neutral-900 hover:bg-neutral-800 transition-colors ring-[1px] ring-neutral-900/20 rounded-md text-white text-sm font-medium"><img src="/src/assets/github-fill.svg" alt="Icono de github" class="size-4">Github</a>
     </nav>
   </header>
@@ -24,8 +24,24 @@
       <div id="contribuciones" class="w-full flex flex-wrap gap-4"></div>
     </section>
   </main>
-  <script type="module" src="./src/colaboradores.ts"></script>
+  <script type="module">
+    import { obtenerColaboradores } from "./src/api/github";
+    import cardColaboradores from "./src/components/cardColaboradores"
+    import spinner from "./src/components/spinner"
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      const $contribuciones = document.querySelector('#contribuciones ')
+      const _spinner = spinner()
+      $contribuciones?.append(_spinner)
+      const data = await obtenerColaboradores()
+      _spinner.remove()
+      data.forEach(contribuidor => {
+        const { avatar_url, html_url, login, contributions } = contribuidor
+        const card = cardColaboradores(avatar_url, html_url, login, contributions);
+        $contribuciones?.append(card)
+      });
+    })
+  </script>
 </body>
 
 </html>
-
