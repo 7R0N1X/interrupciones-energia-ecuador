@@ -39,6 +39,7 @@ const resultado = (notificaciones: Notificacione[], funcion: Function): HTMLElem
     botonSectoresAfectados.onclick = () => funcion(alimentador)
     const iconMapPinned = crearElemento('IMG', 'w-4 h-4 inline-block float-left')
     iconMapPinned.setAttribute('src', mapPinned)
+    iconMapPinned.setAttribute('alt', 'Mapa de sectores afectados')
     botonSectoresAfectados.appendChild(iconMapPinned)
 
     const h3 = crearElemento('H3', 'text-gray-100 font-bold my-6')
