@@ -31,29 +31,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const mostrarResultados = async () => {
     limpiarResultados($resultados);
-    $resultados.appendChild(spinner());
-    const consulta = await consultarCortesCnelEp(identificacion, empresaSeleccionada, tipoConsulta);
 
-    if (consulta) {
-      limpiarResultados($resultados);
-      if (consulta.status === "ERROR") {
-        if (!existeAlerta) {
-          $body.appendChild(alerta(consulta.mensaje));
-          setTimeout(() => {
-            $body.querySelector(".alerta").remove();
-          }, 3000);
+    if (empresaSeleccionada !== undefined || tipoConsulta !== undefined || identificacion !== undefined) {
+      $resultados.appendChild(spinner());
+      const consulta = await consultarCortesCnelEp(identificacion, empresaSeleccionada, tipoConsulta);
+      if (consulta) {
+        limpiarResultados($resultados);
+        if (consulta.status === "ERROR") {
+          if (!existeAlerta) {
+            $body.appendChild(alerta(consulta.mensaje));
+            setTimeout(() => {
+              $body.querySelector(".alerta").remove();
+            }, 3000);
+          }
+        } else if (consulta.status === "OK") {
+          localStorage.setItem("empresaSeleccionada", JSON.stringify(empresaSeleccionada));
+          localStorage.setItem("tipoConsulta", JSON.stringify(tipoConsulta));
+          localStorage.setItem("identificacion", JSON.stringify(identificacion));
+
+          const { notificaciones } = consulta;
+          $resultados.appendChild(resultado(notificaciones, mostrarModal));
         }
-      } else if (consulta.status === "OK") {
-        localStorage.setItem("empresaSeleccionada", JSON.stringify(empresaSeleccionada));
-        localStorage.setItem("tipoConsulta", JSON.stringify(tipoConsulta));
-        localStorage.setItem("identificacion", JSON.stringify(identificacion));
-
-        const { notificaciones } = consulta;
-        $resultados.appendChild(resultado(notificaciones, mostrarModal));
       }
+      const formulario = $("form");
+      formulario.reset();
     }
-    const formulario = $("form");
-    formulario.reset();
   };
 
   mostrarResultados();
