@@ -198,3 +198,15 @@ select:focus-visible {
     transform: scale(1);
   }
 }
+
+/* Estilo del scroll */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background: #171717;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0A0A0A;
+} 
