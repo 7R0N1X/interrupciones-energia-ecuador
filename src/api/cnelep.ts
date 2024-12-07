@@ -16,7 +16,7 @@ export const consultarCortesCnelEp = async (identificacion: string, empresa: str
             return { status: 'OK', notificaciones: data.notificaciones };
           }
         } catch (err) {
-          console.error(err);
+          return { status: 'ERROR', mensaje: 'No se pudo conectar al servidor. Intente nuevamente más tarde.' }
         }
         break;
       case 'cuenta-contrato':
@@ -32,7 +32,7 @@ export const consultarCortesCnelEp = async (identificacion: string, empresa: str
             return { status: 'OK', notificaciones: data.notificaciones };
           }
         } catch (err) {
-          console.error(err);
+          return { status: 'ERROR', mensaje: 'No se pudo conectar al servidor. Intente nuevamente más tarde.' }
         }
         break;
       case 'numero-de-identificaion':
@@ -48,7 +48,7 @@ export const consultarCortesCnelEp = async (identificacion: string, empresa: str
             return { status: 'OK', notificaciones: data.notificaciones };
           }
         } catch (err) {
-          console.error(err);
+          return { status: 'ERROR', mensaje: 'No se pudo conectar al servidor. Intente nuevamente más tarde.' }
         }
         break;
     }
