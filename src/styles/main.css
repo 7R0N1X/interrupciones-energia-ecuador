@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 input:focus-visible,
@@ -18,9 +18,15 @@ select:focus-visible {
   left: 0;
   right: 0;
   height: 6px;
-  background: linear-gradient(to right, #FCD116 40%, #003399 40% 70%, #ED1C24 70%);
+  background: linear-gradient(
+    to right,
+    #fcd116 40%,
+    #003399 40% 70%,
+    #ed1c24 70%
+  );
 }
 
+/* Spiner */
 .sk-circle {
   margin: 100px auto;
   width: 40px;
@@ -37,7 +43,7 @@ select:focus-visible {
 }
 
 .sk-circle .sk-child:before {
-  content: '';
+  content: "";
   display: block;
   margin: 0 auto;
   width: 15%;
@@ -170,7 +176,6 @@ select:focus-visible {
 }
 
 @-webkit-keyframes sk-circleBounceDelay {
-
   0%,
   80%,
   100% {
@@ -185,7 +190,6 @@ select:focus-visible {
 }
 
 @keyframes sk-circleBounceDelay {
-
   0%,
   80%,
   100% {
@@ -208,5 +212,5 @@ select:focus-visible {
   border-radius: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #0A0A0A;
-} 
+  background: #0a0a0a;
+}
