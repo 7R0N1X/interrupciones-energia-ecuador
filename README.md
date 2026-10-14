@@ -1,54 +1,90 @@
-# Interrupciones de Energía en Ecuador
+<a id="readme-top"></a>
 
-Aplicación web construida con Vanilla JavaScript para consultar el horario de corte del servicio eléctrico en Ecuador para los ciudadanos con contrato del servicio eléctrico de la empresa CNEL EP.
-Este proyecto está diseñado para practicar las bases del desarrollo web.
+<!-- PROJECT SHIELDS -->
 
-## Instalación
+[![HTML5][html-shield]][html-url]
+[![CSS3][css-shield]][css-url]
+[![JavaScript][js-shield]][js-url]
 
-### Requisitos previos
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
 
-Antes de comenzar, asegúrate de tener instalado:
+<img width="100" height="100" alt="cortes-luz-ecuador" src="https://github.com/user-attachments/assets/c6e21639-f76c-46d1-951c-8857edeea776" />
+  <h3 align="center">Interrupciones de Energía en Ecuador </h3>
 
-- Node.js
+  <p align="center">
+  Consulta los horarios de cortes de luz programados de CNEL EP mediante <br />
+  código único, cuenta contrato o número de identificación.
+</p>
+</div>
 
-### Clonar el repositorio
+<!-- ABOUT THE PROJECT -->
 
-```bash
-  git clone https://github.com/7R0N1X/interrupciones-energia-ecuador.git
-  cd interrupciones-energia-ecuador
-```
+## Acerca del proyecto
 
-### Instalar dependencias
+**Interrupciones de Energía en Ecuador** es una aplicación web que permite consultar las notificaciones de cortes de luz programados de CNEL EP. Consulta directamente la API oficial de la empresa, sin necesidad de crear una cuenta ni registrarse.
 
-Si no tienes pnpm instalado, primero instala pnpm globalmente:
+Este proyecto fue realizado con el propósito de **aprender desarrollo web vanilla** (HTML, CSS y JavaScript puro), ideal para quienes están incursionando en el desarrollo frontend.
 
-```bash
+<!-- GETTING STARTED -->
+
+## Primeros pasos
+
+Para tener una copia local funcionando sigue estos pasos.
+
+### Prerrequisitos
+
+- Node.js 18+ y pnpm (o npm/yarn).
+  ```sh
   npm install -g pnpm
+  ```
+- Tu número de cuenta CNEL y el tipo de consulta.
+
+### Instalación
+
+1. Entra a la carpeta del proyecto
+   ```sh
+   cd interrupciones-energia-ecuador
+   ```
+2. Instala las dependencias
+   ```sh
+   pnpm install
+   ```
+3. Inicia el servidor de desarrollo
+   ```sh
+   pnpm dev
+   ```
+4. Abre tu navegador en la URL que se muestra en terminal (por defecto `http://localhost:5173`)
+
+### Build para producción
+
+```sh
+pnpm build
 ```
-Luego, instala las dependencias del proyecto:
 
-```bash
-  pnpm install
-```
+Los archivos optimizados se generarán en la carpeta `dist/`.
 
-### Iniciar el servidor
+<!-- USAGE EXAMPLES -->
 
-```bash
-  pnpm run dev
-```
+## Uso
 
-La aplicación estará disponible en http://localhost:5173.
+1. Selecciona el tipo de consulta (Código Único, Cuenta Contrato, Número de identificación).
+2. Ingresa el número correspondiente.
+3. Haz clic en **Consultar**.
+4. Revisa los resultados.
 
-## Tecnologías Utilizadas
-
-![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
-![Node.js](https://img.shields.io/badge/Node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
-![HTML](https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS](https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwind-css&logoColor=white)
+<!-- LICENSE -->
 
 ## Licencia
 
-Este proyecto es de código abierto bajo la [licencia MIT](https://github.com/7R0N1X/interrupciones-energia-ecuador/blob/main/LICENSE).
+Este proyecto es de código abierto bajo la licencia [MIT](https://github.com/7R0N1X/interrupciones-energia-ecuador/blob/main/LICENSE)
+
+<!-- MARKDOWN LINKS & IMAGES -->
+
+[html-shield]: https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white
+[html-url]: https://developer.mozilla.org/es/docs/Web/HTML
+[css-shield]: https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white
+[css-url]: https://developer.mozilla.org/es/docs/Web/CSS
+[js-shield]: https://img.shields.io/badge/javascript-ES6+-yellow?style=for-the-badge&logo=javascript&logoColor=white
+[js-url]: https://developer.mozilla.org/es/docs/Web/JavaScript
